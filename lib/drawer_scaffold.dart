@@ -16,20 +16,28 @@ class DrawerItem {
 class DrawerScaffold extends StatefulWidget {
   final List<DrawerItem> drawerItems;
 
-  const DrawerScaffold({Key? key, required this.drawerItems}) : super(key: key);
+  final Color? bgColor;
+  final Color? fgColor;
+
+  DrawerScaffold({
+    Key? key,
+    required this.drawerItems,
+    this.bgColor,
+    this.fgColor,
+  }) : super(key: key);
 
   @override
   State<DrawerScaffold> createState() => _DrawerScaffoldState();
 }
 
 class _DrawerScaffoldState extends State<DrawerScaffold> {
-  final drawerBgColor = Colors.blue.shade900;
-  final drawerFgColor = Colors.white;
-
   var pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    var drawerBgColor = widget.bgColor ?? Colors.blue.shade900;
+    var drawerFgColor = widget.fgColor ?? Colors.white;
+
     var listTiles = [];
     for (var i = 0; i < widget.drawerItems.length; i++) {
       var pageItem = widget.drawerItems[i];
