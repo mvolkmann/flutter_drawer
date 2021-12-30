@@ -2,31 +2,35 @@ import 'package:flutter/material.dart';
 
 extension WidgetExtension on Widget {
   Container align([Alignment alignment = Alignment.centerLeft]) {
-    Widget? child = this;
-    return Container(alignment: alignment, child: child);
+    return Container(alignment: alignment, child: this);
   }
 
   /// Wraps a widget in a Container that has a border.
   /// This is very useful for debugging.
   /// It is similar to the CSS property "outline: 1px solid red;".
   Container border({Color color = Colors.red}) {
-    Widget? child = this;
+    /*
+    // This is an attempt to avoid nesting Containers in Containers.
+    // It doesn't work because all the Container properties are final.
+    var container =
+        runtimeType == Container ? this as Container : Container(child: this);
+    container.decoration = BoxDecoration(border: Border.all(color: color));
+    return container;
+    */
     return Container(
-      child: child,
+      child: this,
       decoration: BoxDecoration(border: Border.all(color: color)),
     );
   }
 
   /// Wraps a widget in a Center.
   Center center() {
-    Widget? child = this;
-    return Center(child: child);
+    return Center(child: this);
   }
 
   /// Wraps a widget in a SizedBox with a given width and height.
   SizedBox size({required double width, required double height}) {
-    Widget? child = this;
-    return SizedBox(child: child, height: height, width: width);
+    return SizedBox(child: this, height: height, width: width);
   }
 
   /// Wraps a widget in a Padding with a given horizontal padding.
