@@ -18,12 +18,14 @@ class DrawerScaffold extends StatefulWidget {
 
   final Color? bgColor;
   final Color? fgColor;
+  final double width;
 
   DrawerScaffold({
     Key? key,
     required this.drawerItems,
     this.bgColor,
     this.fgColor,
+    this.width = 140,
   }) : super(key: key);
 
   @override
@@ -57,13 +59,13 @@ class _DrawerScaffoldState extends State<DrawerScaffold> {
 
     return Scaffold(
       // Scaffolds with an AppBar automatically
-      //get a hamburger menu on the left side.
+      // get a hamburger menu on the left side.
       appBar: AppBar(
         title: Text(widget.drawerItems[pageIndex].title),
       ),
       body: Center(child: widget.drawerItems[pageIndex].widget),
       drawer: SizedBox(
-        width: 140,
+        width: widget.width,
         child: Drawer(
           child: Container(
             color: drawerBgColor,
