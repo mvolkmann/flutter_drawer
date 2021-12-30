@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
-  static const route = '/settings';
-
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
