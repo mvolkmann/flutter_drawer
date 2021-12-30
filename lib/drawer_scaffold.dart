@@ -42,7 +42,7 @@ class _DrawerScaffoldState extends State<DrawerScaffold> {
         child: ListView(
           padding: EdgeInsets.zero, // removes default padding
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
