@@ -35,7 +35,7 @@ class _DrawerScaffoldState extends State<DrawerScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    var drawerBgColor = widget.bgColor ?? Colors.blue.shade900;
+    var drawerBgColor = widget.bgColor ?? Colors.blue.shade700;
     var drawerFgColor = widget.fgColor ?? Colors.white;
 
     var listTiles = [];
