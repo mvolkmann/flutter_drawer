@@ -67,8 +67,9 @@ class _DrawerScaffoldState extends State<DrawerScaffold> {
                     color: drawerFgColor,
                     icon: Icon(Icons.menu),
                     onPressed: () => Navigator.pop(context),
-                    padding: EdgeInsets.zero, // removes default padding
-                  ).align().border(),
+                  ).align(),
+                  padding: EdgeInsets.zero, // removes default padding
+                  // This size lines up the two hamburger icons perfectly.
                 ).size(width: 0, height: 110),
                 ...listTiles,
               ],
