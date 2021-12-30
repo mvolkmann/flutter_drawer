@@ -34,12 +34,12 @@ class _DrawerScaffoldState extends State<DrawerScaffold> {
     for (var i = 0; i < widget.drawerItems.length; i++) {
       var pageItem = widget.drawerItems[i];
       listTiles.add(ListTile(
-        leading: Icon(pageItem.icon, color: drawerFgColor).border(),
-        //TODO: Why is this so wide?
+        leading: Icon(pageItem.icon, color: drawerFgColor),
+        minLeadingWidth: 10, // decreases space between leading and title
         title: Text(
           pageItem.title,
           style: TextStyle(color: drawerFgColor),
-        ).border(),
+        ),
         onTap: () {
           setState(() => pageIndex = i);
           Navigator.pop(context);
@@ -54,23 +54,27 @@ class _DrawerScaffoldState extends State<DrawerScaffold> {
         title: Text(widget.drawerItems[pageIndex].title),
       ),
       body: Center(child: widget.drawerItems[pageIndex].widget),
-      drawer: Drawer(
-        child: Container(
-          color: drawerBgColor,
-          width: 50,
-          child: ListView(
-            padding: EdgeInsets.zero, // removes default padding
-            children: [
-              SizedBox(
-                height: 100,
-                child: DrawerHeader(
-                  child: Icon(Icons.menu, color: drawerFgColor).align(),
-                ),
-              ),
-              ...listTiles,
-            ],
+      drawer: SizedBox(
+        width: 140,
+        child: Drawer(
+          child: Container(
+            color: drawerBgColor,
+            child: ListView(
+              padding: EdgeInsets.zero, // removes default padding
+              children: [
+                DrawerHeader(
+                  child: IconButton(
+                    color: drawerFgColor,
+                    icon: Icon(Icons.menu),
+                    onPressed: () => Navigator.pop(context),
+                    padding: EdgeInsets.zero, // removes default padding
+                  ).align().border(),
+                ).size(width: 0, height: 110),
+                ...listTiles,
+              ],
+            ),
           ),
-        ).border(),
+        ),
       ),
     );
   }
